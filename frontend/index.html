@@ -8,11 +8,26 @@
   <body>
     <script>
       console.log("script laoding");
-      const evtSource = new EventSource("/listen");
+      const evtSource = new EventSource("/stream");
       evtSource.addEventListener(
         "online",
         function (e) {
           console.log(e.data);
+        },
+        false
+      );
+      evtSource.addEventListener(
+        "message",
+        function (e) {
+          console.log(e.data);
+        },
+        false
+      );
+      evtSource.addEventListener(
+        "error",
+        function (e) {
+          console.log(e);
+          console.log("Error");
         },
         false
       );
